@@ -16,12 +16,17 @@ total = 0
 for name in member_names :
     name_record[member_names[count]] = member_records[count]
     count = count + 1
+    
 
 for name,record in name_record.items() :
+    count = 0
+    total = 0
     for score in record :
         count = count + 1
         total = total + score
         average = total/count
     name_average = dict()
     name_average[name] = average
-    print(name_average)
+    sorted_average = sorted(name_average.items(),key = lambda item: item[1], reverse = True)
+    if sorted_average.values()[0] >= 5 :
+        print('보너스 대상자 :',sorted_average.keys()[0])
